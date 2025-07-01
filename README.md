@@ -1,4 +1,4 @@
-# FinChain Intelligence Network (FIN)
+# GRABHACK
 
 ![Version](https://img.shields.io/badge/version-0.2.0-blue)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
@@ -186,12 +186,6 @@ docker build -t FinChain-Intelligence-Network .
 docker run -p 7860:7860 FinChain-Intelligence-Network
 ```
 
-## 📝 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 **Tags**: `#Blockchain` `#AI` `#FinTech` `#MachineLearning` `#MultiAgent` `#Crypto` `#InvestmentStrategy` `#RegulatoryCompliance` `#DeFi` `#TokenAnalysis` `#FetchAI` `#uAgents` `#SmartContract` `#PortfolioOptimization` `#MLOps` `#FinancialAnalytics` `#EthereumAnalysis` `#ComplianceAutomation` `#MarketIntelligence` `#Tokenomics`
