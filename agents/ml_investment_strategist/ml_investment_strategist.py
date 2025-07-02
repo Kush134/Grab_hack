@@ -16,20 +16,20 @@ class MLInvestmentStrategist(BaseAgent):
     3. Optimizing portfolio allocation using reinforcement learning algorithms
     """
     
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
+    def __init__(self, name: str = "ml_investment_strategist", description: str = "Uses machine learning for investment strategy and portfolio optimization", config: Optional[Dict[str, Any]] = None):
         """
         Initialize the ML Investment Strategist agent.
         
-        Args:
+        Args:ß
+            name: Name of the agent
             config: Optional configuration parameters
         """
-        name = "ml_investment_strategist"
-        description = "Uses machine learning for investment strategy and portfolio optimization"
         super().__init__(name, description, config)
         self.risk_profiles = ["conservative", "moderate", "aggressive"]
         self.asset_classes = ["stocks", "bonds", "crypto", "commodities", "real_estate", "cash"]
         self.prediction_models = {}
         self.optimization_models = {}
+
         
     def _initialize_agent(self):
         """Set up the agent with ML models and data connections."""

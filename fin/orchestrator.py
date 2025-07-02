@@ -198,6 +198,9 @@ class FinChainOrchestrator:
         
         return synthesized_response
     
+
+
+
     def process_query(self, query: str, risk_profile: Optional[str] = None, 
                     context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
@@ -599,4 +602,4 @@ class FinChainOrchestrator:
             port: Port number
         """
         self.logger.info(f"Starting FinChain Orchestrator on {host}:{port}")
-        self.uagent.run(host=host, port=port)
+        self.uagent.run()  # ✅ This is correct

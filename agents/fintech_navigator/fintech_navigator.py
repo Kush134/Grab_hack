@@ -17,15 +17,15 @@ class FinTechNavigator(BaseAgent):
     3. Assisting with payment systems integration and financial API orchestration
     """
     
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
+
+    def __init__(self, name: str = "fintech_navigator", description: str = "Tracks fintech trends, regulations, and market movements", config: Optional[Dict[str, Any]] = None):
         """
         Initialize the FinTech Navigator agent.
         
         Args:
+            name: Name of the agent
             config: Optional configuration parameters
         """
-        name = "fintech_navigator"
-        description = "Tracks fintech trends, regulations, and market movements"
         super().__init__(name, description, config)
         self.fintech_trends = {}
         self.regulatory_updates = {}

@@ -17,15 +17,14 @@ class CryptoEconomics(BaseAgent):
     3. Evaluating the economic sustainability of blockchain projects
     """
     
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
+    def __init__(self, name: str = "crypto_economics", description: str = "Models tokenomics and provides insights on token valuation and DeFi protocols", config: Optional[Dict[str, Any]] = None):
         """
         Initialize the CryptoEconomics agent.
         
         Args:
             config: Optional configuration parameters
         """
-        name = "crypto_economics"
-        description = "Models tokenomics and provides insights on token valuation and DeFi protocols"
+        # name = "crypto_economics"
         super().__init__(name, description, config)
         self.token_models = {}
         self.defi_protocols = {}

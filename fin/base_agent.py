@@ -103,7 +103,7 @@ class BaseAgent(ABC):
             port: Port number
         """
         self.logger.info(f"Starting agent {self.name} on {host}:{port}")
-        self.uagent.run(host=host, port=port)
+        self.uagent.run()
     
     @abstractmethod
     def process_query(self, query: str) -> Dict[str, Any]:

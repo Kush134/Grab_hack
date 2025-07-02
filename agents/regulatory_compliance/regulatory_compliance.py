@@ -17,20 +17,19 @@ class RegulatoryCompliance(BaseAgent):
     3. Generating compliance reports for different regulatory frameworks
     """
     
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
+    def __init__(self, name: str = "regulatory_compliance", description: str = "Tracks financial and blockchain regulations and assesses compliance risks", config: Optional[Dict[str, Any]] = None):
         """
         Initialize the Regulatory Compliance agent.
         
         Args:
+            name: Name of the agent
             config: Optional configuration parameters
         """
-        name = "regulatory_compliance"
-        description = "Tracks financial and blockchain regulations and assesses compliance risks"
         super().__init__(name, description, config)
         self.regulations = {}
         self.jurisdictions = {}
         self.compliance_frameworks = {}
-        self.last_updated = datetime.now() - timedelta(days=1)  # Simulate last update was yesterday
+        self.last_updated = datetime.now() - timedelta(days=1)  # Simulate last update was yesterday  
         
     def _initialize_agent(self):
         """Set up the agent with regulatory data sources and compliance frameworks."""

@@ -220,7 +220,7 @@ def format_response_html(response: Dict[str, Any], visualizations: Dict[str, Any
     return "".join(html)
 
 
-def process_query(query: str, risk_profile: str) -> Tuple[str, str]:
+async def process_query(query: str, risk_profile: str) -> Tuple[str, str]:
     """
     Process a user query through the FIN network and format the results.
     
@@ -232,34 +232,37 @@ def process_query(query: str, risk_profile: str) -> Tuple[str, str]:
         Tuple of (formatted HTML response, raw JSON response)
     """
     try:
-        # Get the orchestrator instance
         orchestrator = initialize_fin_network()
-        
-        # Check if we're dealing with an async process_query
+
         if hasattr(orchestrator, 'process_query_async'):
-            # Create a new event loop for this thread
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            
-            # Call the async method and run it to completion
-            response = loop.run_until_complete(
-                orchestrator.process_query_async(query, risk_profile)
-            )
-            loop.close()
+            response = await orchestrator.process_query_async(query, risk_profile)
         else:
-            # Use the synchronous version
             response = orchestrator.process_query(query, risk_profile)
-        
-        # Generate visualizations
+
         visualizations = generate_visualizations(response)
-        
-        # Format the response as HTML
         html_response = format_response_html(response, visualizations)
-        
-        # Format the raw JSON response
         raw_json = json.dumps(response, indent=2)
-        
         return html_response, raw_json
+
+    except Exception as e:
+        error_html = f"""
+        <div style="color: red; border: 1px solid red; padding: 10px; border-radius: 5px;">
+            <h3>Error Processing Query</h3>
+            <p><strong>Error message:</strong> {str(e)}</p>
+            <p><strong>Query:</strong> {query}</p>
+            <p><strong>Risk profile:</strong> {risk_profile}</p>
+            <h4>Debugging Information:</h4>
+            <p>Check the application logs for more detailed error information.</p>
+        </div>
+        """
+
+        error_json = json.dumps({
+            "error": str(e),
+            "query": query,
+            "risk_profile": risk_profile
+        }, indent=2)
+
+        return error_html, error_json
         
     except Exception as e:
         # Your existing error handling code...
